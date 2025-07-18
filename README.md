@@ -5,7 +5,7 @@
 ---
 
 ## 📌 Projektübersicht
-Ein **IoT-basiertes Umweltmonitoring-System**, das per Fahrrad/Auto durch Städte fährt und Echtzeitdaten sammelt:
+Ein **IoT-basiertes Umweltmonitoring-System**, das per Auto durch Städte gefahren wird und Echtzeitdaten sammelt:
 - **Gemessene Parameter:**  
   🌀 Luftqualität (9x MQ-Sensoren: CO/CO2/NOx/LPG/etc.)  
   📍 Präzises GPS-Tracking (200Hz)  
