@@ -1,0 +1,121 @@
+\doxysection{config.\+h}
+\hypertarget{config_8h_source}{}\label{config_8h_source}\index{src/config.h@{src/config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Konfigurationsdatei\ für\ das\ Umweltkontrollsystem}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Arduino\ Mega\ 2560\ Projekt}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \#define\ DEBUG\_ENABLED\ 1\ \ \ \ \ \ \ \ \ \ //\ ✅\ EINGESCHALTET\ für\ Sensor-\/Tests!}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\#define\ USE\_FLASH\_STRINGS\ 1\ \ \ \ \ \ //\ F()\ Makro\ für\ Strings\ verwenden}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\#define\ ENABLE\_DETAILED\_LOGGING\ 0\ //\ Detaillierte\ Logs\ ausgeschaltet*\ Zentrale\ Konfiguration\ aller\ Hardware-\/Parameter\ und\ Konstanten}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ CONFIG\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ CONFIG\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ HARDWARE\ KONFIGURATION}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ Pin-\/Definitionen}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ const\ uint8\_t\ TEMP\_SENSOR\_PIN\ =\ 8;\ \ \ \ \ \ \ \ //\ OneWire\ Temperatursensor\ (DEAKTIVIERT)}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{const}\ uint8\_t\ DHT\_SENSOR\_PIN\ =\ 22;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ DHT11\ Temperatur\ \&\ Luftfeuchtigkeit}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{const}\ uint8\_t\ SD\_CHIP\_SELECT\ =\ 10;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ SD-\/Karte\ CS\ Pin}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{const}\ uint8\_t\ RADIATION\_INPUT\_PIN\ =\ 29;\ \ \ \textcolor{comment}{//\ Geigerzähler/Radioaktivitätssensor}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ OLED\ Display\ (I2C)}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{const}\ uint8\_t\ OLED\_SCREEN\_WIDTH\ =\ 128;\ \ \ \ \textcolor{comment}{//\ OLED\ Display\ Breite\ in\ Pixel}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{const}\ uint8\_t\ OLED\_SCREEN\_HEIGHT\ =\ 64;\ \ \ \ \textcolor{comment}{//\ OLED\ Display\ Höhe\ in\ Pixel}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{const}\ int8\_t\ OLED\_RESET\_PIN\ =\ -\/1;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ Pin\ (-\/1\ =\ shared\ Arduino\ reset\ pin)}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{const}\ uint8\_t\ OLED\_I2C\_ADDRESS\ =\ 0x3C;\ \ \ \ \textcolor{comment}{//\ Standard\ I2C\ Adresse\ für\ 128x64\ OLED}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ GPS\ Hardware\ Serial\ (Arduino\ Mega)}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ RX1\ (Pin\ 19)\ -\/\ GPS\ TX,\ TX1\ (Pin\ 18)\ -\/\ GPS\ RX}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{const}\ uint32\_t\ GPS\_BAUD\ =\ 9600;}
+\DoxyCodeLine{00034\ \textcolor{keyword}{const}\ uint32\_t\ SERIAL\_BAUD\ =\ 9600;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Gas-\/Sensoren\ (MQ-\/Serie)\ -\/\ Analoge\ Pins}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{const}\ uint8\_t\ MQ2\_PIN\ =\ A0;\ \ \ \textcolor{comment}{//\ Methan,\ Butan,\ LPG,\ Rauch}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{const}\ uint8\_t\ MQ3\_PIN\ =\ A1;\ \ \ \textcolor{comment}{//\ Alkohol,\ Ethanol}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{const}\ uint8\_t\ MQ4\_PIN\ =\ A2;\ \ \ \textcolor{comment}{//\ Methan,\ CNG\ Gas}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{const}\ uint8\_t\ MQ5\_PIN\ =\ A3;\ \ \ \textcolor{comment}{//\ Natürliche\ Gase,\ LPG}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{const}\ uint8\_t\ MQ6\_PIN\ =\ A4;\ \ \ \textcolor{comment}{//\ LPG,\ Butangas}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{const}\ uint8\_t\ MQ7\_PIN\ =\ A5;\ \ \ \textcolor{comment}{//\ Kohlenmonoxid\ (CO)}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{const}\ uint8\_t\ MQ8\_PIN\ =\ A6;\ \ \ \textcolor{comment}{//\ Wasserstoff\ (H2)}}
+\DoxyCodeLine{00044\ \textcolor{keyword}{const}\ uint8\_t\ MQ9\_PIN\ =\ A7;\ \ \ \textcolor{comment}{//\ CO,\ entflammbare\ Gase}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{const}\ uint8\_t\ MQ135\_PIN\ =\ A8;\ \textcolor{comment}{//\ Luftqualität\ (CO2,\ NH3,\ NOx)}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{const}\ uint8\_t\ MIC\_KLEIN\_PIN\ =\ A9;}
+\DoxyCodeLine{00047\ \textcolor{keyword}{const}\ uint8\_t\ MIC\_GROSS\_PIN\ =\ A10;}
+\DoxyCodeLine{00048\ \textcolor{keyword}{const}\ uint8\_t\ LDR\_PIN\ =\ A11;\ \ \textcolor{comment}{//\ Lichtsensor\ (Light\ Dependent\ Resistor)}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ TIMING\ KONFIGURATION}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ SENSOR\_INTERVAL\ =\ 2000;\ \ \ \ \textcolor{comment}{//\ Gas-\/Sensoren\ Intervall\ (ms)}}
+\DoxyCodeLine{00055\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ LOGGING\_INTERVAL\ =\ 2000;\ \ \ \textcolor{comment}{//\ Hauptloop\ Logging\ Intervall\ (2\ Sekunden\ für\ stabilere\ SD-\/Karte)}}
+\DoxyCodeLine{00056\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ TEMP\_SENSOR\_DELAY\ =\ 1000;\ \ \textcolor{comment}{//\ Temperatur-\/Konvertierungszeit\ (ms)}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ SD\_INIT\_DELAY\ =\ 200;\ \ \ \ \ \ \ \textcolor{comment}{//\ SD-\/Karte\ Initialisierung\ (ms)}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ OLED\_UPDATE\_INTERVAL\ =\ 2000;\ \textcolor{comment}{//\ OLED\ Display\ Update\ alle\ 2\ Sekunden}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ SPEICHER-\/OPTIMIERUNG}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{const}\ uint8\_t\ FILENAME\_LENGTH\ =\ 16;\ \ \ \ \ \ \ \textcolor{comment}{//\ Reduziert\ von\ 32\ auf\ 16}}
+\DoxyCodeLine{00065\ \textcolor{keyword}{const}\ uint8\_t\ INDEX\_LENGTH\ =\ 20;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reduziert\ von\ 32\ auf\ 20\ \ }}
+\DoxyCodeLine{00066\ \textcolor{keyword}{const}\ uint8\_t\ TEMP\_BUFFER\_SIZE\ =\ 12;}
+\DoxyCodeLine{00067\ \textcolor{keyword}{const}\ uint8\_t\ ADDR\_BUFFER\_SIZE\ =\ 8;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ Zusätzliche\ Speicher-\/Konstanten}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{const}\ uint8\_t\ MAX\_GAS\_SENSORS\ =\ 9;}
+\DoxyCodeLine{00071\ \textcolor{keyword}{const}\ uint8\_t\ MAX\_MICROPHONES\ =\ 2;}
+\DoxyCodeLine{00072\ \textcolor{keyword}{const}\ uint8\_t\ CSV\_BUFFER\_SIZE\ =\ 128;\ \ \ \ \ \ \ \textcolor{comment}{//\ Für\ CSV-\/Zeilen}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ GPS\ REFERENZPUNKT}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ HOME\_LAT\ =\ 49.352622;\ \ \textcolor{comment}{//\ QTH\ Breitengrad}}
+\DoxyCodeLine{00079\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ HOME\_LON\ =\ 8.165440;\ \ \ \textcolor{comment}{//\ QTH\ Längengrad}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ GPS\_INVALID\_F\ =\ 1000000.0;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ DATEISYSTEM}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{const}\ uint8\_t\ MAX\_FILENAME\_LEN\ =\ 13;\ \ \textcolor{comment}{//\ 8.3\ Format\ für\ FAT16/32}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ SENSOR\ KALIBRIERUNG}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ GAS\_SENSOR\_WARMUP\ =\ 10000;\ \ \textcolor{comment}{//\ Gas-\/Sensoren\ Aufwärmzeit\ (ms)}}
+\DoxyCodeLine{00093\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TEMP\_PRECISION\ =\ 0.0625;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ DEBUGGING}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ DEBUG\_ENABLED\ 1\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ {\ucr}\ EINSCHALTEN\ für\ Debugging!}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ USE\_FLASH\_STRINGS\ 1\ \ \ \ \ \ }\textcolor{comment}{//\ F()\ Makro\ für\ Strings\ verwenden}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ ENABLE\_DETAILED\_LOGGING\ 1\ }\textcolor{comment}{//\ Detaillierte\ Logs\ einschalten}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#if\ DEBUG\_ENABLED}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ \#define\ DEBUG\_PRINT(x)\ Serial.print(x)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \#define\ DEBUG\_PRINTLN(x)\ Serial.println(x)}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \#define\ DEBUG\_PRINT(x)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Leer\ =\ kein\ Code\ generiert}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \#define\ DEBUG\_PRINTLN(x)\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Leer\ =\ kein\ Code\ generiert}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ Memory-\/kritische\ Warnungen}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ RAM\_WARNING\_THRESHOLD\ 512\ \ \ \ }\textcolor{comment}{//\ Warnung\ bei\ <\ 512\ Bytes}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ RAM\_CRITICAL\_THRESHOLD\ 256\ \ \ }\textcolor{comment}{//\ Kritisch\ bei\ <\ 256\ Bytes}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONFIG\_H}}
+
+\end{DoxyCode}

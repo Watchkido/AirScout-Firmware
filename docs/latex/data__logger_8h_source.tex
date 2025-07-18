@@ -1,0 +1,78 @@
+\doxysection{data\+\_\+logger.\+h}
+\hypertarget{data__logger_8h_source}{}\label{data__logger_8h_source}\index{src/data\_logger.h@{src/data\_logger.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Data-\/Logger-\/Modul\ für\ das\ Umweltkontrollsystem}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Verwaltet\ SD-\/Karte\ und\ Datenprotokollierung}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ DATA\_LOGGER\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ DATA\_LOGGER\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SD.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}sensors.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}gps\_module.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}rtc\_module.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ DATENSTRUKTUREN}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_log_entry}{LogEntry}}\ \{}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_log_entry_afbd0caef87e194aaa2cbed15ae046449}{timestamp}}[INDEX\_LENGTH];\ \ \ \ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_log_entry_ac9b7cbd3264f75028da067ecc46d7399}{temperature\_dht}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_log_entry_aef7b800d2960c60854d4f04ca46c989c}{humidity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{struct_g_p_s_data}{GPSData}}\ \mbox{\hyperlink{struct_log_entry_ac3d5353fb1334f990b1d6538bae25f9d}{gpsData}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_log_entry_a90f2a907ae4f811ad6eaa9c9bab9f4e2}{gasSensors}}[9];\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_log_entry_af9808686374d09dbc2404de6a15be3b4}{microphones}}[2];\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_log_entry_aff73ea0edd84467ceb1c1e59d78de296}{radiationCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{struct_r_t_c_data}{RTCData}}\ \mbox{\hyperlink{struct_log_entry_a52f8be2cf3e164996ae990f7c674630a}{rtcData}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ FUNKTIONS-\/DEKLARATIONEN}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ SD-\/Karte\ Initialisierung}}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{bool}\ initSDCard();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{bool}\ checkSDCard();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ Datei-\/Management}}
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{bool}\ createLogFile(\textcolor{keywordtype}{char}*\ filename,\ uint8\_t\ filenameSize);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{bool}\ openLogFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ closeLogFile();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{bool}\ writeLogHeader();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ Datenprotokollierung}}
+\DoxyCodeLine{00115\ \textcolor{keywordtype}{bool}\ logData(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_log_entry}{LogEntry}}*\ entry);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00129\ \textcolor{keywordtype}{bool}\ logSensorData(\textcolor{keywordtype}{float}\ temperature\_dht,\ \textcolor{keywordtype}{float}\ humidity,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_p_s_data}{GPSData}}*\ gps,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ rtc);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00141\ \textcolor{keywordtype}{void}\ formatLogEntry(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_log_entry}{LogEntry}}*\ entry,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{int}\ bufferSize);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{comment}{//\ CSV-\/Format\ Funktionen}}
+\DoxyCodeLine{00153\ \textcolor{keywordtype}{void}\ formatCSVHeader(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{int}\ bufferSize);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00165\ \textcolor{keywordtype}{void}\ formatCSVEntry(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_log_entry}{LogEntry}}*\ entry,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{int}\ bufferSize);}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ Hilfsfunktionen}}
+\DoxyCodeLine{00177\ \textcolor{keywordtype}{void}\ generateFilename(\textcolor{keywordtype}{char}*\ filename,\ uint8\_t\ filenameSize);}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00185\ \textcolor{keywordtype}{void}\ printSDCardInfo();}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00195\ \textcolor{keywordtype}{bool}\ isSDCardAvailable();}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \textcolor{comment}{//\ Globale\ Variablen}}
+\DoxyCodeLine{00198\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ globalLogFilename[FILENAME\_LENGTH];\ \ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ sdCardInitialized;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DATA\_LOGGER\_H}}
+
+\end{DoxyCode}

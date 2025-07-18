@@ -1,0 +1,49 @@
+\doxysection{display.\+h}
+\hypertarget{display_8h_source}{}\label{display_8h_source}\index{src/display.h@{src/display.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ OLED\ Display\ Modul\ für\ das\ Umweltkontrollsystem}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ 0,96"{}\ SSD1306\ 128x64\ I2C\ OLED\ Display}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ DISPLAY\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ DISPLAY\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <Adafruit\_GFX.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <Adafruit\_SSD1306.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ DISPLAY\ INITIALISIERUNG}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{extern}\ Adafruit\_SSD1306\ display;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ FUNKTIONS-\/DEKLARATIONEN}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Display\ Grundfunktionen}}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{bool}\ initDisplay();}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ clearDisplay();}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ updateDisplay();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ Display\ Seiten\ (rotieren\ alle\ 2\ Sekunden)}}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ displayPage1\_Status();\ \ \ \ \ \ \textcolor{comment}{//\ System\ Status\ +\ Zeit}}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ displayPage2\_Temperature();\ \textcolor{comment}{//\ Temperatur\ +\ Luftfeuchtigkeit\ \ }}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ displayPage3\_Environment();\ \textcolor{comment}{//\ Licht\ +\ Radioaktivität}}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ displayPage4\_Gas();\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Gas-\/Sensoren\ Übersicht}}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ displayPage5\_Audio();\ \ \ \ \ \ \ \textcolor{comment}{//\ Mikrofon-\/Pegel}}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ displayPage6\_GPS();\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GPS\ Position}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Hilfsfunktionen}}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ displayTitle(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ title);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ displayValue(\textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ label,\ \textcolor{keywordtype}{float}\ value,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ unit);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ displayText(\textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ text);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ nextDisplayPage();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DISPLAY\_H}}
+
+\end{DoxyCode}

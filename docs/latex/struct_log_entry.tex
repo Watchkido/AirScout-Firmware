@@ -1,0 +1,48 @@
+\doxysection{Log\+Entry Struct Reference}
+\hypertarget{struct_log_entry}{}\label{struct_log_entry}\index{LogEntry@{LogEntry}}
+
+
+Vollständiger Datensatz für einen Logging-\/\+Eintrag.  
+
+
+
+
+{\ttfamily \#include $<$data\+\_\+logger.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_log_entry_afbd0caef87e194aaa2cbed15ae046449}\label{struct_log_entry_afbd0caef87e194aaa2cbed15ae046449} 
+char {\bfseries timestamp} \mbox{[}INDEX\+\_\+\+LENGTH\mbox{]}
+\begin{DoxyCompactList}\small\item\em Formatierter Zeitstempel als String. \end{DoxyCompactList}\item 
+\Hypertarget{struct_log_entry_ac9b7cbd3264f75028da067ecc46d7399}\label{struct_log_entry_ac9b7cbd3264f75028da067ecc46d7399} 
+float {\bfseries temperature\+\_\+dht}
+\begin{DoxyCompactList}\small\item\em Temperatur vom DHT11-\/\+Sensor in °C. \end{DoxyCompactList}\item 
+\Hypertarget{struct_log_entry_aef7b800d2960c60854d4f04ca46c989c}\label{struct_log_entry_aef7b800d2960c60854d4f04ca46c989c} 
+float {\bfseries humidity}
+\begin{DoxyCompactList}\small\item\em Luftfeuchtigkeit vom DHT11-\/\+Sensor in \%. \end{DoxyCompactList}\item 
+\Hypertarget{struct_log_entry_ac3d5353fb1334f990b1d6538bae25f9d}\label{struct_log_entry_ac3d5353fb1334f990b1d6538bae25f9d} 
+\mbox{\hyperlink{struct_g_p_s_data}{GPSData}} {\bfseries gps\+Data}
+\begin{DoxyCompactList}\small\item\em Vollständige GPS-\/\+Informationen. \end{DoxyCompactList}\item 
+\Hypertarget{struct_log_entry_a90f2a907ae4f811ad6eaa9c9bab9f4e2}\label{struct_log_entry_a90f2a907ae4f811ad6eaa9c9bab9f4e2} 
+int {\bfseries gas\+Sensors} \mbox{[}9\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array mit allen 9 Gassensor-\/\+Werten (0-\/1023) \end{DoxyCompactList}\item 
+\Hypertarget{struct_log_entry_af9808686374d09dbc2404de6a15be3b4}\label{struct_log_entry_af9808686374d09dbc2404de6a15be3b4} 
+int {\bfseries microphones} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array mit beiden Mikrofon-\/\+Pegeln (0-\/1023) \end{DoxyCompactList}\item 
+\Hypertarget{struct_log_entry_aff73ea0edd84467ceb1c1e59d78de296}\label{struct_log_entry_aff73ea0edd84467ceb1c1e59d78de296} 
+int {\bfseries radiation\+Count}
+\begin{DoxyCompactList}\small\item\em Aktueller Radioaktivitätszählerstand. \end{DoxyCompactList}\item 
+\Hypertarget{struct_log_entry_a52f8be2cf3e164996ae990f7c674630a}\label{struct_log_entry_a52f8be2cf3e164996ae990f7c674630a} 
+\mbox{\hyperlink{struct_r_t_c_data}{RTCData}} {\bfseries rtc\+Data}
+\begin{DoxyCompactList}\small\item\em Vollständige RTC-\/\+Zeitinformationen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Vollständiger Datensatz für einen Logging-\/\+Eintrag. 
+
+Diese Struktur enthält alle Sensordaten, GPS-\/\+Informationen und Zeitstempel für einen kompletten Datenlogger-\/\+Eintrag. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/data\+\_\+logger.\+h\end{DoxyCompactItemize}

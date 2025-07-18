@@ -1,0 +1,72 @@
+\doxysection{gps\+\_\+module.\+h}
+\hypertarget{gps__module_8h_source}{}\label{gps__module_8h_source}\index{src/gps\_module.h@{src/gps\_module.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ GPS-\/Modul\ für\ das\ Umweltkontrollsystem}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Verwaltet\ GPS-\/Funktionen\ und\ Positionsdaten}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ GPS\_MODULE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ GPS\_MODULE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <TinyGPSPlus.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ GPS\ OBJEKT}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ TinyGPSPlus\ gpsParser;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ GPS\ DATENSTRUKTUREN}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_g_p_s_data}{GPSData}}\ \{}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_g_p_s_data_a6bcbbaaf127de3825f7fcbb0f3f034f9}{isValid}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_g_p_s_data_a78c25d42ef055552e34f88587e325ea5}{latitude}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_g_p_s_data_ad59503abff6bbe89ab08aa60c037b4b0}{longitude}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_g_p_s_data_a8c5881471ed232d8af6369fff1971d99}{altitude}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_g_p_s_data_ab185ecbf676377ded320e2b09bf9e586}{speedKmh}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_g_p_s_data_a3bb37fe036e2b62d636eb2d8f1435282}{course}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{byte}\ \mbox{\hyperlink{struct_g_p_s_data_a43476dba8b27cd8cd3ff4cbac4ac65e1}{satellites}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{byte}\ \mbox{\hyperlink{struct_g_p_s_data_aa56a8b53aa50be828f146e81e4bf53e6}{quality}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{struct_g_p_s_data_ad7147912fe6151846e1e8ab9946de8b0}{lastUpdate}};\ }
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ FUNKTIONS-\/DEKLARATIONEN}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ GPS\ Initialisierung}}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{bool}\ initGPS();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ setupGPSSerial();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ GPS\ Datenverarbeitung}}
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ updateGPS();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{bool}\ readGPSData(\mbox{\hyperlink{struct_g_p_s_data}{GPSData}}*\ data);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ printGPSData(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_p_s_data}{GPSData}}*\ data);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ GPS\ Hilfsfunktionen}}
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{double}\ calculateCourse(\textcolor{keywordtype}{double}\ lat1,\ \textcolor{keywordtype}{double}\ lon1,\ \textcolor{keywordtype}{double}\ lat2,\ \textcolor{keywordtype}{double}\ lon2);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{double}\ calculateDistance(\textcolor{keywordtype}{double}\ lat1,\ \textcolor{keywordtype}{double}\ lon1,\ \textcolor{keywordtype}{double}\ lat2,\ \textcolor{keywordtype}{double}\ lon2);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00139\ \textcolor{keywordtype}{void}\ formatCoordinates(\textcolor{keywordtype}{double}\ lat,\ \textcolor{keywordtype}{double}\ lon,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{byte}\ bufferSize);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00151\ \textcolor{keywordtype}{void}\ formatGPSString(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_p_s_data}{GPSData}}*\ data,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{byte}\ bufferSize);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ GPS\ Status}}
+\DoxyCodeLine{00162\ \textcolor{keywordtype}{bool}\ isGPSConnected();}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00172\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ getLastGPSUpdate();}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00182\ \textcolor{keywordtype}{byte}\ getGPSQuality();}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GPS\_MODULE\_H}}
+
+\end{DoxyCode}

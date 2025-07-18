@@ -1,0 +1,124 @@
+\doxysection{utilities.\+h}
+\hypertarget{utilities_8h_source}{}\label{utilities_8h_source}\index{src/utilities.h@{src/utilities.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Utilities-\/Modul\ für\ das\ Umweltkontrollsystem}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Allgemeine\ Hilfsfunktionen\ und\ Tools}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ UTILITIES\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ UTILITIES\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ SYSTEM-\/FUNKTIONEN}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ System-\/Info}}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ printSystemInfo();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ printMemoryUsage();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ getFreeRAM();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ Reset\ und\ Watchdog}}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ softReset();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ systemCheck();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ STRING-\/HILFSFUNKTIONEN}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ String-\/Manipulation}}
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ trimString(\textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ toLowerCase(\textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ toUpperCase(\textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{comment}{//\ Formatierung}}
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ formatFloat(\textcolor{keywordtype}{float}\ value,\ uint8\_t\ decimals,\ \textcolor{keywordtype}{char}*\ buffer,\ uint8\_t\ bufferSize);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{void}\ formatInteger(\textcolor{keywordtype}{int}\ value,\ uint8\_t\ width,\ \textcolor{keywordtype}{char}*\ buffer,\ uint8\_t\ bufferSize);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00123\ \textcolor{comment}{//\ MATHEMATISCHE\ HILFSFUNKTIONEN}}
+\DoxyCodeLine{00124\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{comment}{//\ Durchschnitt\ und\ Statistik}}
+\DoxyCodeLine{00137\ \textcolor{keywordtype}{float}\ calculateAverage(\textcolor{keywordtype}{int}*\ values,\ uint8\_t\ count);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{int}\ findMinimum(\textcolor{keywordtype}{int}*\ values,\ uint8\_t\ count);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00161\ \textcolor{keywordtype}{int}\ findMaximum(\textcolor{keywordtype}{int}*\ values,\ uint8\_t\ count);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ Bereichsprüfungen}}
+\DoxyCodeLine{00175\ \textcolor{keywordtype}{bool}\ isInRange(\textcolor{keywordtype}{int}\ value,\ \textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00188\ \textcolor{keywordtype}{int}\ constrainValue(\textcolor{keywordtype}{int}\ value,\ \textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00191\ \textcolor{comment}{//\ TIMING-\/HILFSFUNKTIONEN}}
+\DoxyCodeLine{00192\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \textcolor{comment}{//\ Non-\/blocking\ Delays}}
+\DoxyCodeLine{00205\ \textcolor{keywordtype}{bool}\ isTimeElapsed(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\ lastTime,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ interval);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00215\ \textcolor{keywordtype}{void}\ updateTimer(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*\ timer);}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00226\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ getElapsedTime(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ startTime);}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00229\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00230\ \textcolor{comment}{//\ LED/STATUS-\/FUNKTIONEN}}
+\DoxyCodeLine{00231\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \textcolor{comment}{//\ Status-\/LED\ (falls\ vorhanden)}}
+\DoxyCodeLine{00240\ \textcolor{keywordtype}{void}\ initStatusLED();}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00250\ \textcolor{keywordtype}{void}\ setStatusLED(\textcolor{keywordtype}{bool}\ state);}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00261\ \textcolor{keywordtype}{void}\ blinkStatusLED(uint8\_t\ count,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ duration);}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00264\ \textcolor{comment}{//\ ERROR-\/HANDLING}}
+\DoxyCodeLine{00265\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \textcolor{comment}{//\ Fehlerbehandlung}}
+\DoxyCodeLine{00274\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00275\ \ \ ERROR\_NONE\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00276\ \ \ ERROR\_SD\_CARD\ =\ 1,\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00277\ \ \ ERROR\_RTC\ =\ 2,\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ ERROR\_GPS\ =\ 3,\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00279\ \ \ ERROR\_TEMPERATURE\ =\ 4,\ \ \ \ }
+\DoxyCodeLine{00280\ \ \ ERROR\_MEMORY\ =\ 5,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00281\ \ \ ERROR\_SYSTEM\ =\ 6,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00282\ \ \ ERROR\_UNKNOWN\ =\ 255\ \ \ \ \ \ \ }
+\DoxyCodeLine{00283\ \}\ SystemError;}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00294\ \textcolor{keywordtype}{void}\ reportError(SystemError\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message);}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00302\ \textcolor{keywordtype}{void}\ clearError();}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00312\ SystemError\ getLastError();}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00315\ \textcolor{comment}{//\ KALIBRIERUNG}}
+\DoxyCodeLine{00316\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \textcolor{comment}{//\ Sensor-\/Kalibrierung}}
+\DoxyCodeLine{00325\ \textcolor{keywordtype}{void}\ calibrateGasSensors();}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00335\ \textcolor{keywordtype}{float}\ calibrateTemperatureSensor();}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00343\ \textcolor{keywordtype}{void}\ saveCalibrationData();}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00351\ \textcolor{keywordtype}{void}\ loadCalibrationData();}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UTILITIES\_H}}
+
+\end{DoxyCode}

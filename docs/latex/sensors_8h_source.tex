@@ -1,0 +1,79 @@
+\doxysection{sensors.\+h}
+\hypertarget{sensors_8h_source}{}\label{sensors_8h_source}\index{src/sensors.h@{src/sensors.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Sensoren-\/Modul\ für\ das\ Umweltkontrollsystem}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Verwaltet\ alle\ Sensor-\/Funktionen\ (Temperatur,\ Gas,\ Radioaktivität)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ SENSORS\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SENSORS\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \#include\ <OneWire.h>\ \ //\ DEAKTIVIERT}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ SENSOR\ INITIALISIERUNG}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ extern\ OneWire\ temperatureSensor;\ \ //\ DEAKTIVIERT}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ lastRadiationState;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ radiationCounter;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ lastRadiationCheck;\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ FUNKTIONS-\/DEKLARATIONEN}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ DHT11\ Temperatur\ \&\ Luftfeuchtigkeit}}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{bool}\ initDHTSensor();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{bool}\ readDHTSensor(\textcolor{keywordtype}{float}*\ temperature,\ \textcolor{keywordtype}{float}*\ humidity);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ printDHTValues(\textcolor{keywordtype}{float}\ temperature,\ \textcolor{keywordtype}{float}\ humidity);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ Gas-\/Sensoren\ (MQ-\/Serie)}}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ initGasSensors();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ warmupGasSensors();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{int}\ readGasSensor(uint8\_t\ pin);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ readAllGasSensors(\textcolor{keywordtype}{int}*\ values);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ printGasSensorValues(\textcolor{keywordtype}{int}*\ values);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{comment}{//\ Radioaktivitäts-\/Sensor}}
+\DoxyCodeLine{00115\ \textcolor{keywordtype}{void}\ initRadiationSensor();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00124\ \textcolor{keywordtype}{void}\ checkRadiationSensor();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00134\ \textcolor{keywordtype}{int}\ getRadiationCount();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00144\ \textcolor{keywordtype}{int}\ getRadiationClicksPerSecond();}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00152\ \textcolor{keywordtype}{void}\ resetRadiationCounter();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00160\ \textcolor{keywordtype}{void}\ printRadiationStats();}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{comment}{//\ Mikrofon-\/Sensoren}}
+\DoxyCodeLine{00172\ \textcolor{keywordtype}{int}\ readMicrophone(uint8\_t\ pin);}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00182\ \textcolor{keywordtype}{void}\ readAllMicrophones(\textcolor{keywordtype}{int}*\ micValues);}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ Lichtsensor\ (LDR)}}
+\DoxyCodeLine{00193\ \textcolor{keywordtype}{int}\ readLightSensor();}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00203\ \textcolor{keywordtype}{float}\ getLightPercent();}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00214\ \textcolor{keywordtype}{void}\ printLightLevel(\textcolor{keywordtype}{int}\ lightValue,\ \textcolor{keywordtype}{float}\ lightPercent);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{comment}{//\ Sensor-\/Diagnose}}
+\DoxyCodeLine{00224\ \textcolor{keywordtype}{void}\ testAllSensors();}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00232\ \textcolor{keywordtype}{void}\ testTemperatureSensors();}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SENSORS\_H}}
+
+\end{DoxyCode}

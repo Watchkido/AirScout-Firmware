@@ -1,0 +1,83 @@
+\doxysection{rtc\+\_\+module.\+h}
+\hypertarget{rtc__module_8h_source}{}\label{rtc__module_8h_source}\index{src/rtc\_module.h@{src/rtc\_module.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ RTC-\/Modul\ für\ das\ Umweltkontrollsystem}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Verwaltet\ Echtzeituhren-\/Funktionen}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ RTC\_MODULE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ RTC\_MODULE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}RTClib.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ RTC\ DATENSTRUKTUREN}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_r_t_c_data}{RTCData}}\ \{}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_r_t_c_data_ad6f3b8a088755fca11012ce31e73de98}{year}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{byte}\ \mbox{\hyperlink{struct_r_t_c_data_ac7de13959823d3aa5b53e344f51cff6d}{month}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{byte}\ \mbox{\hyperlink{struct_r_t_c_data_a62a60cf93d4df994a91f57578554898b}{day}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{byte}\ \mbox{\hyperlink{struct_r_t_c_data_af0e2a5d39094eda50f46ffad57485945}{hour}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{byte}\ \mbox{\hyperlink{struct_r_t_c_data_a71cbb213ac92c0cb509c0b63dfbef68b}{minute}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{byte}\ \mbox{\hyperlink{struct_r_t_c_data_ad73260dcd8be4e0e59848f1f8ff66b89}{second}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{struct_r_t_c_data_a39b8c7274ece8a891fd07ba03affb5b9}{timestamp}};\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_r_t_c_data_aac8a73174f955935812529a5d3c601d8}{isValid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ RTC\ OBJEKT}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ RTC\_DS1307\ rtcClock;\ \ \ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ FUNKTIONS-\/DEKLARATIONEN}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ ==============================================}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ RTC\ Initialisierung}}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{bool}\ initRTC();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{bool}\ isRTCRunning();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ setRTCTime(\textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{byte}\ month,\ \textcolor{keywordtype}{byte}\ day,\ \textcolor{keywordtype}{byte}\ hour,\ \textcolor{keywordtype}{byte}\ minute,\ \textcolor{keywordtype}{byte}\ second);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ setRTCFromCompileTime();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ Zeit\ lesen/schreiben}}
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{bool}\ readRTCData(\mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ data);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ printRTCData(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ data);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{void}\ printCurrentTime();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{comment}{//\ GPS-\/Synchronisation}}
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{bool}\ syncRTCWithGPS();}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00141\ \textcolor{keywordtype}{bool}\ setRTCFromGPS(\textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ day,\ \textcolor{keywordtype}{int}\ hour,\ \textcolor{keywordtype}{int}\ minute,\ \textcolor{keywordtype}{int}\ second);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{comment}{//\ Zeit-\/Hilfsfunktionen}}
+\DoxyCodeLine{00153\ \textcolor{keywordtype}{void}\ formatTimeString(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ data,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{byte}\ bufferSize);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00164\ \textcolor{keywordtype}{void}\ formatDateString(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ data,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{byte}\ bufferSize);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{void}\ formatTimestamp(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ data,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{byte}\ bufferSize);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ Zeitzone-\/Funktionen\ (MEZ/MESZ)}}
+\DoxyCodeLine{00191\ \textcolor{keywordtype}{bool}\ isDST(\textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ day,\ \textcolor{keywordtype}{int}\ hour);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00201\ \textcolor{keywordtype}{void}\ adjustUTCToLocal(\mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ data);}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00213\ \textcolor{keywordtype}{void}\ formatLocalDateTime(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ data,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{int}\ bufferSize);}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \textcolor{comment}{//\ Timestamp-\/Funktionen}}
+\DoxyCodeLine{00224\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ getRTCTimestamp();}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00234\ \textcolor{keywordtype}{bool}\ isTimeValid(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_t_c_data}{RTCData}}*\ data);}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RTC\_MODULE\_H}}
+
+\end{DoxyCode}
