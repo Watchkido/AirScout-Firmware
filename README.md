@@ -14,6 +14,9 @@ Ein **IoT-basiertes Umweltmonitoring-System**, das per Auto durch Städte gefahr
   🌡️ Mikroklima (Temperatur/Luftfeuchte/Licht)  
 
 ---
+## Kaggle Datensatz
+[Hyperlocal Urban Environmental Monitoring Dataset](https://www.kaggle.com/datasets/avitarus/hyperlocal-urban-environmental-monitoring-dataset)
+
 
 ## 🛠️ Hardware (Arduino)
 ### 📦 Komponenten
@@ -74,7 +77,7 @@ python pipeline.py --input data/raw --output kaggle/
 
 ## 🌟 Nächste Schritte
 - [ ] Kalibrierungskurven für MQ-Sensoren dokumentieren  
-- [ ] Kaggle-Datensatz unter [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) veröffentlichen  
+- [x] [Kaggle-Datensatz unter [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) veröffentlicht 
 - [ ] Tutorial für Bürgerwissenschaftler erstellen  
 
 ---
