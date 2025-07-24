@@ -27,6 +27,8 @@ int radiationCounter = 0;
 unsigned long lastRadiationCheck = 0;
 int radiationClicksPerSecond = 0;
 int radiationClicksLastSecond = 0;  // Puffer für die letzte vollständige Sekunde
+int radiationClicks2SecSum = 0;    // Summe der letzten 2 Sekunden
+unsigned long lastRadiation2SecTime = 0;
 unsigned long lastRadiationSecond = 0;
 
 // ==============================================
@@ -165,10 +167,18 @@ void checkRadiationSensor() {
   
   // CPS-Berechnung: Klicks pro Sekunde zurücksetzen
   static unsigned long lastSecondTime = 0;
+  static int lastCPS = 0;
   if (now - lastSecondTime >= 1000) {
-    radiationClicksPerSecond = radiationCounter;  // Aktuelle CPS speichern
-    radiationCounter = 0;  // Zähler für neue Sekunde zurücksetzen
+    // Verschiebe die aktuelle Sekunde nach "letzte Sekunde"
+    radiationClicksLastSecond = lastCPS;
+    // Neue aktuelle Sekunde speichern
+    radiationClicksPerSecond = radiationCounter;
+    lastCPS = radiationCounter;
+    radiationCounter = 0;
     lastSecondTime = now;
+    // 2-Sekunden-Summe berechnen
+    radiationClicks2SecSum = radiationClicksPerSecond + radiationClicksLastSecond;
+    lastRadiation2SecTime = now;
   }
   
   // Debug-Status alle 5 Sekunden
@@ -210,6 +220,12 @@ int getRadiationCount() {
 int getRadiationClicksPerSecond() {
   // Echte CPS zurückgeben, nicht Gesamtzähler
   return radiationClicksPerSecond;
+}
+
+// Gibt die Summe der Klicks der letzten 2 Sekunden zurück
+int getRadiationClicksPer2Seconds() {
+  return radiationClicks2SecSum;
+
 }
 
 void resetRadiationCounter() {

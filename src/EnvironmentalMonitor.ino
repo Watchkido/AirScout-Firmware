@@ -311,8 +311,8 @@ void performSensorReadings() {
   DEBUG_PRINT(F(", "));
   DEBUG_PRINTLN(microphones[1]);
   
-  // Radioaktivität anzeigen
-  int radiationCPS = getRadiationClicksPerSecond();
+  // Radioaktivität der letzten 2 Sekunden aufsummieren
+  int radiationCPS = getRadiationClicksPer2Seconds();
   DEBUG_PRINT(F("Radioaktivität: "));
   DEBUG_PRINT(radiationCPS);
   DEBUG_PRINTLN(F(" Klicks/s"));

@@ -142,6 +142,7 @@ int getRadiationCount();
  * @return Anzahl Clicks per Second (CPS) als Maß für Radioaktivität
  */
 int getRadiationClicksPerSecond();
+int getRadiationClicksPer2Seconds();
 
 /**
  * @brief Setzt den Radioaktivitätszähler auf Null zurück.
